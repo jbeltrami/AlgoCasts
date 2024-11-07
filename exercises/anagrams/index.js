@@ -9,22 +9,10 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-  const stringFormat = /[^\w]/g;
+  const normalizeString = (str) =>
+    str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join();
 
-  const formattedA = stringA
-    .replace(stringFormat, "")
-    .toLowerCase()
-    .split("")
-    .sort()
-    .join();
-  const formattedB = stringB
-    .replace(stringFormat, "")
-    .toLowerCase()
-    .split("")
-    .sort()
-    .join();
-
-  return formattedA === formattedB;
+  return normalizeString(stringA) === normalizeString(stringB);
 }
 
 module.exports = anagrams;
