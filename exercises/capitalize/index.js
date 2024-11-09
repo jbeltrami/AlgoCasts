@@ -8,13 +8,14 @@
 //   capitalize('look, it is working!') --> 'Look, It Is Working!'
 
 function capitalize(str) {
-  const capitalized = str.split(" ").map((el, index) => {
-    if (!el) return;
+  return str
+    .split(" ")
+    .map((el, index) => {
+      if (!el) return;
 
-    return el[0].toUpperCase() + el.slice(1);
-  });
-
-  return capitalized.join(" ");
+      return el[0].toUpperCase() + el.slice(1);
+    })
+    .join(" ");
 }
 
 capitalize("a short sentence");
