@@ -17,16 +17,18 @@
 //       '### '
 //       '####'
 
-function steps(n) {
-  for (let row = 0; row < n; row++) {
-    let stair = "";
+function steps(n, row = 0, stair = "") {
+  if (n === row) return;
 
-    for (let column = 0; column < n; column++) {
-      column <= row ? (stair += "#") : (stair += " ");
-    }
-
+  if (n === stair.length) {
     console.log(stair);
+
+    return steps(n, row + 1);
   }
+
+  stair.length <= row ? (stair += "#") : (stair += " ");
+
+  steps(n, row, stair);
 }
 steps(2);
 steps(3);
