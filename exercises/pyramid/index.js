@@ -14,33 +14,22 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {
-  // From 0 to n
-  // Create an empty string, 'level'
-  // 	From 0 to ?? (cols)
-  // 		if the column should have a #
-  // 			Add a # to level
-  // 		else
-  // 			Add ' '
-  // 	console.log(stair)
-
+function pyramid(n, row = 0, level = "") {
   const cols = n * 2 - 1;
   const mid = Math.floor(cols / 2);
 
-  for (let row = 0; row < n; row++) {
-    let level = "";
+  if (n === row) return;
 
-    for (let col = 0; col < cols; col++) {
-      // Determine how many empty spaces we need per col: cols - currentRow
-      mid - row <= col && mid + row >= col ? (level += "#") : (level += " ");
-    }
-
+  if (level.length === cols) {
     console.log(level);
+    return pyramid(n, row + 1);
   }
-}
 
-// pyramid(1);
-// pyramid(2);
-pyramid(3);
+  mid - row <= level.length && mid + row >= level.length
+    ? (level += "#")
+    : (level += " ");
+
+  pyramid(n, row, level);
+}
 
 module.exports = pyramid;
