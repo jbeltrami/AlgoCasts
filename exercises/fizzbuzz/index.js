@@ -12,17 +12,19 @@
 //   4
 //   buzz
 
-function fizzBuzz(n) {
-  for (let i = 1; i <= n; i++) {
-    if (i % 3 === 0 && i % 5 === 0) {
-      console.log("fizzbuzz");
-    } else if (i % 5 === 0) {
-      console.log("buzz");
-    } else if (i % 3 === 0) console.log("fizz");
-    else {
-      console.log(i);
-    }
-  }
+function fizzBuzz(n, counter = 1) {
+  if (counter === n + 1) return;
+
+  counter % 5 === 0 && counter % 3 === 0
+    ? console.log("fizzbuzz")
+    : counter % 5 === 0
+    ? console.log("buzz")
+    : counter % 3 === 0
+    ? console.log("fizz")
+    : console.log(counter);
+  return fizzBuzz(n, counter + 1);
 }
+
+fizzBuzz(5);
 
 module.exports = fizzBuzz;
